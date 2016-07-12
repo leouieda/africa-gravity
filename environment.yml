@@ -1,0 +1,14 @@
+name: braitenberg2015
+dependencies:
+    - python=2.7
+    - pip
+    - numpy
+    - scipy
+    - matplotlib
+    - numba
+    - future
+    - basemap
+    - jupyter
+    - seaborn
+    - pip:
+        - fatiando==0.4
