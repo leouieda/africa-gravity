@@ -19,6 +19,7 @@ def load_icgem_gdf(fname, usecols=None):
         attributes = None
         attr_line = False
         area = [None]*4
+        gridstep = None
         for line in f:
             if line.strip()[:11] == 'end_of_head':
                 break
@@ -44,6 +45,8 @@ def load_icgem_gdf(fname, usecols=None):
                     area[2] = float(parts[1])
                 elif parts[0] == 'longlimit_east':
                     area[3] = float(parts[1])
+                elif parts[0] == 'gridstep':
+                    gridstep = float(parts[1])
             else:
                 attributes = line.strip().split()
                 attr_line = False
@@ -72,6 +75,8 @@ def load_icgem_gdf(fname, usecols=None):
         data[attr] = value.reshape(shape)[::-1].ravel()
     if (height is not None) and ('height' not in attributes):
         data['height'] = height*np.ones(size)
+    if gridstep is not None:
+        data['gridstep'] = gridstep
     if 'latitude' in attributes and 'longitude' in attributes:
         lat, lon = data['latitude'], data['longitude']
         area = (lat.min(), lat.max(), lon.min(), lon.max())
