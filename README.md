@@ -8,6 +8,9 @@ See the notebooks on
 Gravity and topography data were downloaded from the [ICGEM
 webservice](http://icgem.gfz-potsdam.de/).
 
+The reproduction uses some functions from the library [Fatiando a
+Terra](http://www.fatiando.org).
+
 ## References
 
 Braitenberg, C. (2015), Exploration of tectonic structures with GOCE in Africa
